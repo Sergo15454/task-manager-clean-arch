@@ -9,7 +9,7 @@ public class CompleteTaskUseCase
 
     public CompleteTaskUseCase(ITaskRepository repository)
     {
-        _repository = repository;
+        _repository = repository ?? throw new ArgumentNullException(nameof(repository));
     }
 
     public void Execute(Guid id)

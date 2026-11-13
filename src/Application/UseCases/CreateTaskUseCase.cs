@@ -10,7 +10,7 @@ public class CreateTaskUseCase
 
     public CreateTaskUseCase(ITaskRepository repository)
     {
-        _repository = repository;
+        _repository = repository ?? throw new ArgumentNullException(nameof(repository));
     }
 
     public TaskItem Execute(string title)

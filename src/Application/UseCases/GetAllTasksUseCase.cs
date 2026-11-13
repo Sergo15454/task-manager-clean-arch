@@ -10,7 +10,7 @@ public class GetAllTasksUseCase
 
     public GetAllTasksUseCase(ITaskRepository repository)
     {
-        _repository = repository;
+        _repository = repository ?? throw new ArgumentNullException(nameof(repository));
     }
 
     public IReadOnlyList<TaskItem> Execute() => _repository.GetAll();
