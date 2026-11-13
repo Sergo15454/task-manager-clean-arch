@@ -8,7 +8,8 @@ Console.OutputEncoding = Encoding.UTF8;
 Console.InputEncoding = Encoding.UTF8;
 
 // Composition root: тут збираються залежності (Dependency Injection через конструктор).
-ITaskRepository repository = new JsonTaskRepository("tasks.json");
+var storagePath = args.Length > 0 ? args[0] : "tasks.json";
+ITaskRepository repository = new JsonTaskRepository(storagePath);
 var createTask = new CreateTaskUseCase(repository);
 var completeTask = new CompleteTaskUseCase(repository);
 var getAllTasks = new GetAllTasksUseCase(repository);
